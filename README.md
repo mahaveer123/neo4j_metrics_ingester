@@ -28,8 +28,8 @@ Note : if ALL is given as metric key in any type of metrics then All metrics wil
 
  - Edit your neo4j/conf/neo4j.conf file by editing/adding this line
  ```metrics.graphite.server=ip:port```
- ip - host/ip of machine where metrics reporter is running.
- port - port on which metrics reporter is listening. (port_number on which above command executed)
+    - ip - host/ip of machine where metrics reporter is running.
+    - port - port on which metrics reporter is listening. (port_number on which above command executed)
  https://neo4j.com/docs/operations-manual/current/monitoring/
 
  
