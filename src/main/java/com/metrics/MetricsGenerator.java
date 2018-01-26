@@ -17,7 +17,7 @@ public class MetricsGenerator {
 
     private static Properties properties;
     private static Gson gson = new Gson();
-    private static String delimeter;
+    private static String delimiter;
     private static List<String> metricsTemplate;
     private static List<String> counterMetrics;
     private static List<String> timerMetrics;
@@ -30,9 +30,9 @@ public class MetricsGenerator {
             properties = new Properties();
             properties.load(new FileInputStream(Paths.get(filePath).toFile()));
             metricsTemplate = gson.fromJson(properties.getProperty("metrics.template"), List.class);
-            delimeter = properties.getProperty("metrics.delimeter");
-            if (StringUtils.isEmpty(delimeter)) {
-                delimeter = " ";
+            delimiter = properties.getProperty("metrics.delimiter");
+            if (StringUtils.isEmpty(delimiter)) {
+                delimiter = " ";
             }
             excludedMetrics = gson.fromJson(properties.getProperty("metrics.exclude"), List.class);
             counterMetrics = gson.fromJson(properties.getProperty("metrics.counter"), List.class);
@@ -46,7 +46,7 @@ public class MetricsGenerator {
     }
     public static String createStats(String input) {
         Map<String, String> metricsMap = new HashMap<>();
-        List<String> metricsStr = Arrays.asList(input.split(delimeter));
+        List<String> metricsStr = Arrays.asList(input.split(delimiter));
 
         for (int i = 0; i < metricsTemplate.size(); i++) {
             if ("Key".equalsIgnoreCase(metricsTemplate.get(i))) {
